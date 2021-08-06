@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: pip install -e .[test]
       - name: Run tests
-        run: pytest tests -n 4 --cov --cov-report=term-missing --junitxml=test_report.xml
+        run: python -m pytest tests -n 4 --cov --cov-report=term-missing --junitxml=test_report.xml
       - name: Upload test results
         if: always()
         uses: EnricoMi/publish-unit-test-result-action@v1
@@ -51,4 +51,4 @@ jobs:
       - name: Install dependencies
         run: pip install -e .[test]
       - name: Run pylint
-        run: pylint plaseerausbotti/ tests/
+        run: python -m pylint plaseerausbotti/ tests/
