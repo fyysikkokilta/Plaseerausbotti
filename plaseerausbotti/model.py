@@ -4,6 +4,7 @@ from typing import List, Set
 
 import networkx as nx
 import numpy as np
+from thefuzz import fuzz
 
 
 @dataclass
@@ -67,7 +68,7 @@ def read_csv(filename: str):
 
 
 def _is_similar(group1: str, group2: str):
-    """ TODO use Levenshtein Distance or similar.
+    """ Tell whether strings are similar using Levenshtein Distance.
     
     Args:
         group1: group to compare as string
@@ -77,7 +78,7 @@ def _is_similar(group1: str, group2: str):
         bool: True or False
 
     """
-    return group1 == group2
+    return fuzz.ratio(group1, group2) > 87  # threshold can still be hand-tuned
 
 
 def _common_friends(person: Person, people: List[Person]):
