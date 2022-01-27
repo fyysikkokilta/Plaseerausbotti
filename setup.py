@@ -15,12 +15,13 @@ setup(
     author_email="it@fyysikkokilta.fi",
     url="https://github.com/fyysikkokilta/Plaseerausbotti",
     packages=['plaseerausbotti'],
-    python_requires=">=3.6.9,<3.10",
+    python_requires=">=3.6.9,<3.11",
     install_requires=[
         "matplotlib~=3.4",
         "networkx~=2.6",
         "numpy~=1.21",
         "python-telegram-bot~=13.7",
+        "thefuzz[speedup]~=0.19",
     ],
     extras_require={
         "test": [

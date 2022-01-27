@@ -4,7 +4,7 @@ from typing import List, Set
 
 import networkx as nx
 import numpy as np
-
+from thefuzz import fuzz
 
 @dataclass
 class Person:
@@ -46,7 +46,7 @@ def read_csv(filename: str):
 
     """
     people = []
-    with open(filename, mode='r') as csv_file:
+    with open(filename, mode='r', encoding="utf-8") as csv_file:
         csv_reader = csv.DictReader(csv_file)
         headers = list(next(csv_reader).keys())  # get headers from first row
         print(headers, '\n\n')
@@ -67,30 +67,30 @@ def read_csv(filename: str):
 
 
 def _is_similar(group1: str, group2: str):
-    """ TODO use Levenshtein Distance or similar.
-    
+    """ Tell whether strings are similar using Levenshtein Distance.
+
     Args:
         group1: group to compare as string
         group2: the other group to compare as string
-        
+
     Returns:
         bool: True or False
 
     """
-    return group1 == group2
+    return fuzz.ratio(group1, group2) > 87  # threshold can still be hand-tuned
 
 
 def _common_friends(person: Person, people: List[Person]):
     """ Retrieve people that have a similar group.
-    
+
     TODO handle when group is just names.
-    
+
     Args:
         person: Person for which to find common friends
         people: List of people to retrieve similar groups from
-        
+
     Returns:
-        List[Person]: list of friends as people 
+        List[Person]: list of friends as people
 
     """
     friends = []
