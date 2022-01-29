@@ -1,5 +1,8 @@
 # Plaseerausbotti
 
+![Build](https://img.shields.io/github/workflow/status/fyysikkokilta/plaseerausbotti/Publish%20Docker%20image?label=build)
+![CI](https://img.shields.io/github/workflow/status/fyysikkokilta/plaseerausbotti/CI?label=CI)
+
 Telegram bot for seating academic dinner parties (sitsit).
 
 Currently, very much work in progress.
